@@ -1,0 +1,30 @@
+{
+  "name": "proyecto-beca-mb-grupo1-2025",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "npx nodemon app.js"
+  },
+  "keywords": [
+    "javascript",
+    "node.js",
+    "sequelize"
+  ],
+  "author": "Grupo 1 - Proyecto Beca Manuel Belgrano",
+  "license": "ISC",
+  "description": "Proyecto de Consumo de Formulario de Google Forms, utilizando herramientas del Stack MERN.",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "google-auth-library": "^9.15.0",
+    "googleapis": "^144.0.0",
+    "nodemon": "^3.1.9",
+    "sequelize": "^6.37.5",
+    "sqlite3": "^5.1.7",
+    "xlsx": "^0.18.5"
+  }
+}
