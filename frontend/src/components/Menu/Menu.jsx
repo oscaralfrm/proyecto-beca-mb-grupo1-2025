@@ -1,0 +1,22 @@
+// Menu.jsx
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import PantallaInicio from '../PantallaInicio/PantallaInicio';
+import NuevoRegistro from '../NuevoRegistro/NuevoRegistro';
+import ConsultaRegistros from '../ConsultaRegistros/ConsultaRegistros';
+// import ActualizarRegistro from '../ActualizacionRegistro/ActualizacionRegistro';
+
+const Menu = () => {
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<PantallaInicio />} />
+        <Route path="/nuevo-juego" element={<NuevoRegistro />} />
+        <Route path="/lista-juegos" element={<ConsultaRegistros />} />
+        {/* <Route path="/actualizar-registro/:id" element={<ActualizarRegistro />} /> */}
+      </Routes>
+    </div>
+  );
+};
+
+export default Menu;
