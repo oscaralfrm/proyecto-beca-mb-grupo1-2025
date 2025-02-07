@@ -8,6 +8,7 @@ import dbInit from "./data/db-init.js";
 import integrantesRouter from "./routes/integrantesRouter.js";
 import gruposRouter from "./routes/gruposRouter.js";
 import universidadesRouter from "./routes/universidadesRouter.js";
+import brokerRouter from "./routes/brokerRouter.js";
 
 import errorHandler from "./middlewares/errorHandler.js";
 import notFound from "./middlewares/notFound.js";
@@ -30,7 +31,8 @@ app.get("/api/status", (req, res) => {
 app
     .use("/api/integrantes", integrantesRouter)
     .use("/api/grupos", gruposRouter)
-    .use("/api/universidades", universidadesRouter);
+    .use("/api/universidades", universidadesRouter)
+    .use("/api/broker", brokerRouter);
 
 app
     .use(errorHandler)
