@@ -1,15 +1,13 @@
-// Es el main de la aplicación, acá haremos las configuraciones pertinentes...
-
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 
 import dbInit from "./data/db-init.js";
 
-
-// Acá se importan los routers, para cada servicio, de cada modelo...
-// Tengo el del ejemplo...
-import ejemploRouter from "./routes/ejemploRouter.js";
+// Importar routers
+import integrantesRouter from "./routes/integrantesRouter.js";
+import gruposRouter from "./routes/gruposRouter.js";
+import universidadesRouter from "./routes/universidadesRouter.js";
 
 import errorHandler from "./middlewares/errorHandler.js";
 import notFound from "./middlewares/notFound.js";
@@ -18,27 +16,21 @@ dotenv.config();
 
 const app = express();
 
-// Espacio para los Middlewares... en este caso CORS y JSON.
-
+// Middlewares
 app
     .use(cors())
     .use(express.json());
 
-
 // Endpoint de Prueba o de Status
-
 app.get("/api/status", (req, res) => {
     res.json({ respuesta: "API iniciada y escuchando..." });
 });
 
 // Uso de cada una de las rutas de los Routers
-
 app
-    .use("/api/repositories", repositoryRouter)
-    .use("/api/games", gameRouter)
-    .use("/api/ratings", ratingRouter)
-    .use("/api/genres", genresRouter)
-    .use("/api/platforms", platformsRouter);
+    .use("/api/integrantes", integrantesRouter)
+    .use("/api/grupos", gruposRouter)
+    .use("/api/universidades", universidadesRouter);
 
 app
     .use(errorHandler)

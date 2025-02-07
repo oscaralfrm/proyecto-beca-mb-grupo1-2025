@@ -7,7 +7,7 @@ dotenv.config(); // Importante leer las notas del método .config(); TOMA la con
 
 const sequelize = new Sequelize({
     dialect: "sqlite",
-    storage: "" // Acá tenemos que poner la dirección relativa de donde se encuentra nuestra Base de Datos, usamos SQLite...
+    storage: "./db.sqlite" // Acá tenemos que poner la dirección relativa de donde se encuentra nuestra Base de Datos, usamos SQLite...
 });
 
 export default sequelize;
