@@ -27,36 +27,58 @@ export const getGrupoById = async (id) => {
     }
 };
 
-// Crear un nuevo grupo
-export const createGrupo = async ({ nombre, idUniversidad }) => {
+// Crear un nuevo grupo recibiendo el nombre de la universidad y/o nombre de la regional
+export const createGrupo = async ({ nombre, nombreUniversidad, nombreRegional }) => {
     try {
         if (!nombre?.trim()) {
             return { error: "El nombre del grupo no puede estar vacío." };
         }
-
-        const universidad = await Universidades.findByPk(idUniversidad);
-        if (!universidad) {
-            return { error: "La universidad proporcionada no existe." };
+        if (!nombreUniversidad?.trim() && !nombreRegional?.trim()) {
+            return { error: "Debe proporcionarse al menos el nombre de la universidad o de la regional." };
         }
 
-        return await Grupos.create({ nombre, idUniversidad });
+        let universidad = await Universidades.findOne({
+            where: {
+                [Op.or]: [
+                    { nombreUniversidad: nombreUniversidad || null },
+                    { nombreRegional: nombreRegional || null }
+                ]
+            }
+        });
+
+        if (!universidad) {
+            universidad = await Universidades.create({
+                nombreUniversidad: nombreUniversidad || nombreRegional,
+                nombreRegional: nombreRegional || nombreUniversidad
+            });
+        }
+
+        return await Grupos.create({ nombre, idUniversidad: universidad.idUniversidad });
     } catch (error) {
         return { error: error.message };
     }
 };
 
-// Crear un grupo con integrantes
-export const crearGrupoConIntegrantes = async ({ nombre, idUniversidad, integrantes }) => {
+// Crear un grupo con integrantes, recibiendo el nombre de la universidad y/o nombre de la regional
+export const crearGrupoConIntegrantes = async ({ nombre, nombreUniversidad, nombreRegional, integrantes }) => {
     try {
         if (!nombre?.trim()) return { error: "El nombre del grupo no puede estar vacío." };
+        if (!nombreUniversidad?.trim() && !nombreRegional?.trim()) return { error: "Debe proporcionarse al menos el nombre de la universidad o de la regional." };
         if (!integrantes?.length) return { error: "No se proporcionaron integrantes." };
 
-        let universidad = await Universidades.findByPk(idUniversidad);
+        let universidad = await Universidades.findOne({
+            where: {
+                [Op.or]: [
+                    { nombreUniversidad: nombreUniversidad || null },
+                    { nombreRegional: nombreRegional || null }
+                ]
+            }
+        });
 
         if (!universidad) {
             universidad = await Universidades.create({
-                nombreUniversidad: `Universidad ${nombre}`,
-                nombreRegional: nombre,
+                nombreUniversidad: nombreUniversidad || nombreRegional,
+                nombreRegional: nombreRegional || nombreUniversidad
             });
         }
 
