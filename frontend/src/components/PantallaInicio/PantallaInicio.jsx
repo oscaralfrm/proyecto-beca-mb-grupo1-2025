@@ -11,7 +11,7 @@ import Bandeja from '../../assets/bandeja.png';
 
 const PantallaInicio = () => {
   return (
-    <div className="container text-center mt-5">
+    <div className="container text-center mt-5 mb-5">
       {/* Carrusel */}
       <div id="carouselExample" className="carousel slide mb-5" data-bs-ride="carousel">
         <div className="carousel-inner">
@@ -84,6 +84,12 @@ const PantallaInicio = () => {
             </div>
         ))}
       </div>
+
+      {/* Footer
+      <footer className="bg-dark text-white text-center py-4 mt-5">
+        <p className="mb-0">Proyecto desarrollado en la UTN FRC para la Beca Manuel Belgrano.</p>
+        <p className="mb-0">&copy; 2024 UTN Hackaton. Todos los derechos reservados.</p>
+      </footer> */}
 
       <style jsx>{`
         .btn-bright:hover {

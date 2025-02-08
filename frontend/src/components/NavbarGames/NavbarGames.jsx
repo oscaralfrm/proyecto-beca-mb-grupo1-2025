@@ -24,12 +24,12 @@ const NavbarGames = () => {
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul className="navbar-nav gap-3">
             <li className="nav-item">
-              <Link className="nav-link d-flex align-items-center gap-2" to="/nuevo-juego" style={{ transition: '0.3s' }}>
+              <Link className="nav-link d-flex align-items-center gap-2" to="/conversor" style={{ transition: '0.3s' }}>
                 <i className="bi bi-file-earmark-arrow-up"></i> Importar Archivo
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link d-flex align-items-center gap-2" to="/lista-juegos" style={{ transition: '0.3s' }}>
+              <Link className="nav-link d-flex align-items-center gap-2" to="/bandeja" style={{ transition: '0.3s' }}>
                 <i className="bi bi-eye"></i> Visualizar Datos de Archivo
               </Link>
             </li>
