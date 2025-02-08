@@ -68,32 +68,26 @@ const PantallaInicio = () => {
         <p className="text-muted">Convierte tus archivos Excel al formato deseado y gestiona la información de manera eficiente.</p>
       </div>
 
-      <div className="row justify-content-center gy-4"> {/* Added spacing with gy-4 */}
-        <div className="col-md-4 col-10"> {/* Adjust responsive column sizes */}
-          <div className="card text-center shadow-lg p-3 mb-5 rounded" style={{ backgroundColor: "#B5EAD7" }}>
-            <img src={Conversor} alt="Conversor" className="card-img-top" style={{ height: '100px', objectFit: 'contain' }} /> {/* Smaller size */}
-            <div className="card-body d-flex flex-column justify-content-center">
-              <h5 className="card-title">Conversor</h5>
-              <p className="card-text">Importa, procesa y exporta tus archivos Excel al formato deseado.</p>
-              <Link to="/conversor" className="btn btn-success mt-auto btn-bright">Ir al Conversor</Link>
+      <div className="row justify-content-center gy-4">
+        {[{ img: Conversor, title: "Conversor", text: "Importa, procesa y exporta tus archivos Excel.", link: "/conversor" },
+          { img: Bandeja, title: "Visualización en Bandeja", text: "Guarda la información procesada y realiza acciones.", link: "/bandeja" }]
+          .map((item, index) => (
+            <div className="col-md-4 col-10" key={index}>
+              <div className="card text-center shadow-lg p-3 mb-5 rounded h-100 d-flex flex-column" style={{ backgroundColor: "#B5EAD7" }}>
+                <img src={item.img} alt={item.title} className="card-img-top" style={{ height: '100px', objectFit: 'contain' }} />
+                <div className="card-body d-flex flex-column justify-content-between">
+                  <h5 className="card-title">{item.title}</h5>
+                  <p className="card-text">{item.text}</p>
+                  <Link to={item.link} className="btn btn-success mt-auto btn-bright">Ir a la Funcionalidad</Link>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="col-md-4 col-10"> {/* Adjust responsive column sizes */}
-          <div className="card text-center shadow-lg p-3 mb-5 rounded" style={{ backgroundColor: "#B5EAD7" }}>
-            <img src={Bandeja} alt="Visualización en Bandeja" className="card-img-top" style={{ height: '100px', objectFit: 'contain' }} /> {/* Smaller size */}
-            <div className="card-body d-flex flex-column justify-content-center">
-              <h5 className="card-title">Visualización en Bandeja</h5>
-              <p className="card-text">Guarda la información procesada y realiza acciones con ella.</p>
-              <Link to="/bandeja" className="btn btn-success mt-auto btn-bright">Ver Bandeja</Link>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
 
       <style jsx>{`
         .btn-bright:hover {
-          background-color: #2ecc71; /* Emerald Green */
+          background-color: #2ecc71;
           color: white;
           transition: background-color 0.3s ease;
         }
