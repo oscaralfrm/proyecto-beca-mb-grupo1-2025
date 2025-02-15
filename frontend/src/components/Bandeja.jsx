@@ -69,7 +69,7 @@ const Bandeja = () => {
             </p>
 
             <button onClick={handleUpload} className="btn btn-outline-success btn-lg" disabled={!file}>
-              Subir y Procesar
+              Subir y Visualizar
             </button>
           </>
         ) : (

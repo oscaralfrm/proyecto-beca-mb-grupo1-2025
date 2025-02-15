@@ -13,30 +13,30 @@ function Conversor() {
     };
 
     const handleUpload = async () => {
-      if (!file) {
-          toast.error("Por favor, selecciona un archivo Excel.");
-          return;
-      }
-  
-      setIsProcessing(true);
-  
-      try {
-          const convertedFile = await uploadAndConvertFile(file);
-          const url = window.URL.createObjectURL(new Blob([convertedFile], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
-          const link = document.createElement("a");
-          link.href = url;
-          link.setAttribute("download", "Integrantes_Convertidos.xlsx");
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-  
-          toast.success("Archivo convertido y descargado con éxito.");
-      } catch (error) {
-          toast.error("Error al procesar el archivo.");
-      } finally {
-          setIsProcessing(false);
-      }
-  };
+        if (!file) {
+            toast.error("Por favor, selecciona un archivo Excel.");
+            return;
+        }
+
+        setIsProcessing(true);
+
+        try {
+            const convertedFile = await uploadAndConvertFile(file);
+            const url = window.URL.createObjectURL(new Blob([convertedFile], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
+            const link = document.createElement("a");
+            link.href = url;
+            link.setAttribute("download", "Integrantes_Convertidos.xlsx");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            toast.success("Archivo convertido y descargado con éxito.");
+        } catch (error) {
+            toast.error("Error al procesar el archivo.");
+        } finally {
+            setIsProcessing(false);
+        }
+    };
 
     return (
         <div className="container text-center my-5">
@@ -49,7 +49,7 @@ function Conversor() {
                             Seleccionar archivo Excel
                         </label>
                         <input id="fileUpload" type="file" accept=".xlsx,.xlsm,.xls,.csv,.ods" onChange={handleFileChange} className="d-none" />
-                        <p className="text-muted">{!file ? "Arrastra y suelta tu archivo aquí o haz clic en el botón para seleccionarlo." : "Archivo seleccionado: " + file.name}</p>
+                        <p className="text-muted">{!file ? "Selecciona un archivo..." : `Archivo seleccionado: ${file.name}`}</p>
 
                         <button onClick={handleUpload} className="btn btn-outline-success btn-lg" disabled={!file}>
                             Subir y Procesar
