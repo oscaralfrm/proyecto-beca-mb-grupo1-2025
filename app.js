@@ -40,6 +40,7 @@ app.use("/api/grupos", gruposRouter);
 app.use("/api/universidades", universidadesRouter);
 app.use("/api/broker", brokerRouter);
 
+
 // Middleware para rutas no encontradas (debe ir antes del errorHandler)
 app.use(notFound);
 

@@ -3,6 +3,7 @@ import multer from "multer";
 import xlsx from "xlsx";
 import fs from "fs";
 import path from "path";
+import { transformAndExportDataToExcel } from "../services/brokerService.js";
 
 const router = express.Router();
 const upload = multer({ dest: "uploads/" });
@@ -18,25 +19,11 @@ router.post("/convert", upload.single("file"), async (req, res) => {
         const sheetName = workbook.SheetNames[0];
         const data = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
 
-        const transformedData = data.map(row => ({
-            Regional: row["regional"] || "",
-            Grupo: row["nombre de grupo"] || "",
-            Nombre: row["nombre integrante1"] || "",
-            DNI: row["dni int 1"] || "",
-            Mail: row["mail integrante1"] || "",
-        }));
-
-        const newWorkbook = xlsx.utils.book_new();
-        const newWorksheet = xlsx.utils.json_to_sheet(transformedData);
-        xlsx.utils.book_append_sheet(newWorkbook, newWorksheet, "Integrantes");
-
-        const outputFilePath = `uploads/output_${Date.now()}.xlsx`;
-        xlsx.writeFile(newWorkbook, outputFilePath);
-
-        fs.unlinkSync(filePath); // Eliminar archivo temporal
+        const outputFilePath = transformAndExportDataToExcel(data);
+        fs.unlinkSync(filePath); // Eliminar archivo temporal de entrada
 
         res.download(outputFilePath, "Integrantes_Convertidos.xlsx", () => {
-            fs.unlinkSync(outputFilePath); // Eliminar el archivo después de la descarga
+            fs.unlinkSync(outputFilePath); // Eliminar archivo después de la descarga
         });
     } catch (error) {
         console.error("Error al procesar el archivo:", error);

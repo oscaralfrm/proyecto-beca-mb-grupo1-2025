@@ -1,17 +1,29 @@
-// services/brokerService.js
 import xlsx from "xlsx";
 import fs from "fs";
 
 export function transformAndExportDataToExcel(data) {
     try {
-        const transformedData = data.map(row => {
-            return {
-                Regional: row["regional"],
-                Grupo: row["nombre de grupo"],
-                Nombre: row["nombre integrante1"],
-                DNI: row["dni int 1"],
-                Mail: row["mail integrante1"],
-            };
+        const transformedData = [];
+
+        data.forEach(row => {
+            const regional = row["regional"] || "";
+            const grupo = row["nombre de grupo"] || "";
+
+            for (let i = 1; i <= 10; i++) {
+                const nombre = row[`nombre integrante${i}`]?.trim();
+                const dni = row[`dni int ${i}`]?.trim();
+                const mail = row[`mail integrante${i}`]?.trim();
+
+                if (nombre) {
+                    transformedData.push({
+                        Regional: regional,
+                        Grupo: grupo,
+                        Nombre: nombre,
+                        DNI: dni || "",
+                        Mail: mail || "",
+                    });
+                }
+            }
         });
 
         const wb = xlsx.utils.book_new();
