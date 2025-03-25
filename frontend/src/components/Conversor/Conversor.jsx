@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { uploadAndConvertFile } from "../../services/brokerService.js";
+import * as XLSX from "xlsx";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -7,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function Conversor() {
     const [file, setFile] = useState(null);
     const [isProcessing, setIsProcessing] = useState(false);
+    const [convertedData, setConvertedData] = useState([]);
 
     const handleFileChange = (event) => {
         setFile(event.target.files[0]);
@@ -31,6 +33,23 @@ function Conversor() {
             document.body.removeChild(link);
 
             toast.success("Archivo convertido y descargado con éxito.");
+
+            // Leer y mostrar los datos del archivo convertido
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: "array" });
+                    const sheetName = workbook.SheetNames[0];
+                    const sheet = workbook.Sheets[sheetName];
+                    const jsonData = XLSX.utils.sheet_to_json(sheet, { defval: "", raw: false });
+                    setConvertedData(jsonData);
+                } catch (error) {
+                    console.error("Error al procesar el archivo convertido:", error);
+                    toast.error("Error al mostrar el archivo convertido.");
+                }
+            };
+            reader.readAsArrayBuffer(convertedFile);
         } catch (error) {
             toast.error("Error al procesar el archivo.");
         } finally {
@@ -64,6 +83,30 @@ function Conversor() {
                     </div>
                 )}
             </div>
+
+            {convertedData.length > 0 && (
+                <div className="table-responsive mt-4 p-3 bg-white shadow rounded">
+                    <h2 className="text-success">Vista Previa del Archivo Convertido</h2>
+                    <table className="table table-bordered table-hover text-center">
+                        <thead className="table-success">
+                            <tr>
+                                {Object.keys(convertedData[0]).map((key) => (
+                                    <th key={key}>{key}</th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {convertedData.map((row, index) => (
+                                <tr key={index}>
+                                    {Object.values(row).map((value, idx) => (
+                                        <td key={idx}>{value}</td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </div>
     );
 }
