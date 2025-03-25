@@ -1,0 +1,7 @@
+# Añadimos acá todo lo que no queremos que se suba al GitHub. Para archivos individuales es el nombre del archivo, para directorios se agrega la barra al final /
+
+# Todo lo que sea propio que agregue VSCode...
+.vscode/
+
+# Dependencias que instalamos con npm i... revisar apunte
+node_modules/
