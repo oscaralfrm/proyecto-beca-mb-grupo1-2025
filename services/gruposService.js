@@ -103,3 +103,16 @@ export const crearGrupoConIntegrantes = async ({ nombre, nombreUniversidad, nomb
         return { error: error.message };
     }
 };
+export const saveGroupsToDatabase = async (groups) => {
+    const response = await fetch("http://localhost:3001/api/grupos/save", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(groups),
+    });
+
+    if (!response.ok) {
+        throw new Error("Error al guardar los grupos en la base de datos.");
+    }
+};
