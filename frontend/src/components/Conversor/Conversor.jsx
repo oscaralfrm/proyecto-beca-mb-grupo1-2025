@@ -24,13 +24,28 @@ function Conversor() {
 
         try {
             const convertedFile = await uploadAndConvertFile(file);
+
+            // Crear enlace para descargar el archivo
+            // const url = window.URL.createObjectURL(convertedFile);
+            
             const url = window.URL.createObjectURL(new Blob([convertedFile], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
+            
             const link = document.createElement("a");
             link.href = url;
             link.setAttribute("download", "Integrantes_Convertidos.xlsx");
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+
+            toast.success("Archivo convertido y descargado correctamente.");
+            // const convertedFile = await uploadAndConvertFile(file);
+            // const link = document.createElement("a");
+            // link.href = url;
+        
+            // link.setAttribute("download", "Integrantes_Convertidos.xlsx");
+            // document.body.appendChild(link);
+            // link.click();
+            // document.body.removeChild(link);
 
             toast.success("Archivo convertido y descargado con éxito.");
 
