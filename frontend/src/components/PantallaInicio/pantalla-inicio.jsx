@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import HackatonLogo from '../../assets/hackatonLogo.png';
+import HackatonLogo from '../../assets/hackaton-logo.png';
 import Slide1 from '../../assets/slide1.jpg';
 import Slide2 from '../../assets/slide2.png';
 import Slide3 from '../../assets/slide3.jpg';

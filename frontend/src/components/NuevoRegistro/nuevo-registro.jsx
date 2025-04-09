@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import gamesServices from '../../services/gamesServices.service';
-import ratingsServices from '../../services/ratingsServices.service';
+import gamesServices from '../../services/games-services.service';
+import ratingsServices from '../../services/ratings-services.service';
 
 const NuevoRegistro = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();

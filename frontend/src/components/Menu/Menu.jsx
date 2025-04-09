@@ -1,11 +1,11 @@
 // Menu.jsx
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import PantallaInicio from '../PantallaInicio/PantallaInicio';
-import NuevoRegistro from '../NuevoRegistro/NuevoRegistro';
-import Conversor from '../Conversor/Conversor';
-import Bandeja from '../Bandeja.jsx';
-import ConsultaRegistros from '../ConsultaRegistros/ConsultaRegistros';
+import PantallaInicio from '../PantallaInicio/pantalla-inicio';
+import NuevoRegistro from '../NuevoRegistro/nuevo-registro';
+import Conversor from '../Conversor/conversor';
+import Bandeja from '../bandeja.jsx';
+import ConsultaRegistros from '../ConsultaRegistros/consulta-registros';
 // import ActualizarRegistro from '../ActualizacionRegistro/ActualizacionRegistro';
 
 const Menu = () => {

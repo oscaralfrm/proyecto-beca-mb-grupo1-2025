@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { uploadAndConvertFile } from "../../services/brokerService.js";
+import { uploadAndConvertFile } from "../../services/broker-service.js";
 import * as XLSX from "xlsx";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

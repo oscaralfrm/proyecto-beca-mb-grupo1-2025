@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import gamesServices from '../../../services/gamesServices.service';
+import gamesServices from '../../../services/games-services.service';
 
 const TablaRegistros = ({ juegos, cargarTablaDatos }) => {
   const navigate = useNavigate();

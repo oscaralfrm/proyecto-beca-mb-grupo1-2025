@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import gamesServices from '../../services/gamesServices.service';
-import ratingsServices from '../../services/ratingsServices.service';
-import TablaRegistros from './TablaRegistros/TablaRegistros';
+import gamesServices from '../../services/games-services.service';
+import ratingsServices from '../../services/ratings-services.service';
+import TablaRegistros from './TablaRegistros/tabla-registros';
 
 const ConsultaRegistros = () => {
   const navigate = useNavigate();

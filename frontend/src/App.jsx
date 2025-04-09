@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import NavbarGames from './components/NavbarGames/NavbarGames';
-import Menu from './components/Menu/Menu';
+import NavbarGames from './components/NavbarGames/navbar-games';
+import Menu from './components/Menu/menu';
 
 const App = () => {
   return (
