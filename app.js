@@ -4,14 +4,14 @@ import cors from "cors";
 import dbInit from "./data/db-init.js";
 
 // Importar routers
-import integrantesRouter from "./routes/integrantesRouter.js";
-import gruposRouter from "./routes/gruposRouter.js";
-import universidadesRouter from "./routes/universidadesRouter.js";
-import brokerRouter from "./routes/brokerRouter.js";
+import integrantesRouter from "./routes/integrantes-router.js";
+import gruposRouter from "./routes/grupos-router.js";
+import universidadesRouter from "./routes/universidades-router.js";
+import brokerRouter from "./routes/broker-router.js";
 
 // Importar middlewares
-import errorHandler from "./middlewares/errorHandler.js";
-import notFound from "./middlewares/notFound.js";
+import errorHandler from "./middlewares/error-handler.js";
+import notFound from "./middlewares/not-found.js";
 
 dotenv.config();
 

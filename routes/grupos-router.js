@@ -1,6 +1,6 @@
 // routes/GruposRoutes.js
 import express from "express";
-import * as svcGrupos from "../services/gruposService.js";
+import * as svcGrupos from "../services/grupos-service.js";
 import multer from "multer";
 import * as XLSX from "xlsx";
 import fs from "fs";

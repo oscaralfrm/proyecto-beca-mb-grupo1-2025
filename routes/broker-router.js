@@ -3,7 +3,7 @@ import multer from "multer";
 import xlsx from "xlsx";
 import fs from "fs";
 import path from "path";
-import { transformAndExportDataToExcel } from "../services/brokerService.js";
+import { transformAndExportDataToExcel } from "../services/broker-service.js";
 
 const router = express.Router();
 const upload = multer({ dest: "uploads/" });

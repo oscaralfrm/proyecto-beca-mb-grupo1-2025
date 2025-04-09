@@ -1,6 +1,6 @@
 // routes/IntegrantesRoutes.js
 import express from "express";
-import * as svcIntegrantes from "../services/IntegrantesService.js";
+import * as svcIntegrantes from "../services/integrantes-service.js";
 
 const integrantesRouter = express.Router();
 

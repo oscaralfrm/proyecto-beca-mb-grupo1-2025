@@ -1,5 +1,5 @@
 import express from "express"; // Importamos el objeto express, que usa por debajo el patrón Façade y con ésto tenemos funcionalidades para operar los servicios.
-import * as svcEjemplo from "../services/ejemploService.js";
+import * as svcEjemplo from "../services/ejemplo-service.js";
 
 const router = express.Router();
 

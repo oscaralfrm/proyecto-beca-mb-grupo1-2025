@@ -1,6 +1,6 @@
 // routes/UniversidadesRoutes.js
 import express from "express";
-import * as svcUniversidades from "../services/universidadService.js";
+import * as svcUniversidades from "../services/universidad-service.js";
 
 const universidadRouter = express.Router();
 
